@@ -1,12 +1,12 @@
 /*
-* Tyler Deans
-* February 5, 2016
-*/
+ * Tyler Deans
+ * February 21, 2016
+ */
 
 
-function OptionView(_simView) {
-	// keep a link to the view
-	this.simView = _simView;
+function DatatypeView(_simView) {
+    // keep a link to the view
+    this.simView = _simView;
 }
 
 
@@ -14,7 +14,7 @@ function OptionView(_simView) {
 	draws expressions for the option view
 */
 
-OptionView.prototype.drawOptionExpression = function(_option) {
-	
-	$( '#optionDiv').append( _option.optionString );
+DatatypeView.prototype.drawDatatypeExpression = function(_datatype) {
+
+    $('#datatypeDiv').append(_datatype.datatypeString);
 }

@@ -73,7 +73,7 @@ QuestionBankModel.prototype.masteryAchieved = function() {
  * Compare the student's answer to the correct answer.
  * The answer has to be a string
  */
-QuestionBankModel.prototype.checkAnswer = function (studentAnswer) {
+QuestionBankModel.prototype.checkAnswer = function(studentAnswer) {
     for (var i = 0; i < this.answers.length; i++) {
         if (this.answers[i] === studentAnswer) {
             return true;
@@ -89,18 +89,16 @@ QuestionBankModel.prototype.checkAnswer = function (studentAnswer) {
  */
 QuestionBankModel.prototype.createNewQuestions = function() {
     // Each question template is an array holding either strings
-  // or executable commands stored as strings.
-  this.questions = [
-        ["Given the ML code above, what is ans bound to?"],
-        ["Given the ML code above, what is ans bound to?"],
+    // or executable commands stored as strings.
+    this.questions = [
         ["Given the ML code above, what is ans bound to?"],
         ["Given the ML code above, what is ans bound to?"],
         ["Given the ML code above, what is ans bound to?"],
         ["Given the ML code above, what is ans bound to?"],
         ["Given the ML code above, what is ans bound to?"]
-  ];
-  // the question index is used to rotate through the questions
-  this.questionIndex = 0;
+    ];
+    // the question index is used to rotate through the questions
+    this.questionIndex = 0;
     // the answer(s) is/are stored in an array
     this.answers = [];
     // the actual question is stored in a string
@@ -125,7 +123,6 @@ QuestionBankModel.prototype.chooseQuestion = function(_firstQuestion, _lastQuest
         // add it to the question string
         this.question = this.question + templateString;
     }
-    this.question += " If the answer is a string put the string in double quotes."
     return this.question;
 }
 
@@ -140,19 +137,19 @@ QuestionBankModel.prototype.setAnswers = function(_datatype) {
     this.answers = [];
     // Adds the answers to the question to the answers array
     // Set the answer(s) to the question indicated by questionIndex.
-    
+
     if (this.questionIndex == 0) {
-        this.answers.push(_datatype.randomOptionExpression());
-    
+        this.answers.push(_datatype.randomDatatypeExpression());
+
     } else if (this.questionIndex == 1) {
-        this.answers.push(_datatype.randomOptionExpression());
-    
+        this.answers.push(_datatype.randomDatatypeExpression());
+
     } else if (this.questionIndex == 2) {
-        this.answers.push(_datatype.randomOptionExpression());
-    
+        this.answers.push(_datatype.randomDatatypeExpression());
+
     } else if (this.questionIndex == 3) {
-        this.answers.push(_datatype.randomOptionExpression());
+        this.answers.push(_datatype.randomDatatypeExpression());
     } else {
-        this.answers.push(_datatype.getOptionExpressions());
+        this.answers.push(_datatype.randomDatatypeExpression());
     }
 }

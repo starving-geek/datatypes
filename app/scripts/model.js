@@ -13,12 +13,12 @@
  * I use in this program.
  */
 
- /*
+/*
  * Tyler Deans
- * February 5, 2016
+ * February 21, 2016
  */
 function emptyOutArray(myArray) {
-	myArray.length = 0;
+    myArray.length = 0;
 }
 
 
@@ -26,7 +26,7 @@ function emptyOutArray(myArray) {
 // Using Math.round() will give you a non-uniform distribution!
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random
 function getRandomInt(min, max) {
-  return Math.floor(Math.random() * (max - min)) + min;
+    return Math.floor(Math.random() * (max - min)) + min;
 }
 
 
@@ -35,24 +35,24 @@ function getRandomInt(min, max) {
  * of edges.
  */
 function SimModel(_controller, _attrs) {
-	// save a link to the controller
-	this.controller = _controller;
-	// we want SimModel to inherit from CapiModel so SmartSparrow
-	// can access values within the model - here I call the CapiModel
-	// constructor
-	pipit.CapiAdapter.CapiModel.call(this, _attrs)
+    // save a link to the controller
+    this.controller = _controller;
+    // we want SimModel to inherit from CapiModel so SmartSparrow
+    // can access values within the model - here I call the CapiModel
+    // constructor
+    pipit.CapiAdapter.CapiModel.call(this, _attrs)
 
-	// the things below are in the data model so I don't declare them here
-	// this flag is set to true when the mastery condition is reached
-	//this.mastery = false;
-	// this is the numerator for the mastery condition - how many right
-	//this.masteryNumerator = 4;
-	// this is the denominator for the mastery condition - out of how many total?
-	//this.masteryDenominator = 5;
-	// the index of the first legal question template in the template array
-	// this.firstQuestion = 0
-	// the index of the last legal question template in the template array
-	// this.lastQuestion = 4
+    // the things below are in the data model so I don't declare them here
+    // this flag is set to true when the mastery condition is reached
+    //this.mastery = false;
+    // this is the numerator for the mastery condition - how many right
+    //this.masteryNumerator = 4;
+    // this is the denominator for the mastery condition - out of how many total?
+    //this.masteryDenominator = 5;
+    // the index of the first legal question template in the template array
+    // this.firstQuestion = 0
+    // the index of the last legal question template in the template array
+    // this.lastQuestion = 4
 } // GraphModel
 
 
@@ -64,10 +64,10 @@ SimModel.prototype = new pipit.CapiAdapter.CapiModel;
 
 
 SimModel.prototype.initializeModel = function() {
-	// the option expression object is used to answer questions
-	this.optionExpression = new OptionModel(this);
-	// the question bank stores the questions, the answers and the student's
-	// answer history
-	this.questionBank = new QuestionBankModel(this, this.get('numerator'),
-				this.get('denominator'));
+    // the option expression object is used to answer questions
+    this.datatypeExpression = new DatatypeModel(this);
+    // the question bank stores the questions, the answers and the student's
+    // answer history
+    this.questionBank = new QuestionBankModel(this, this.get('numerator'),
+        this.get('denominator'));
 }

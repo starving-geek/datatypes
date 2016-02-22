@@ -1,6 +1,6 @@
  /*
   * Tyler Deans
-  * 11/12/15
+  * February 21, 2016
   * controller.js
   */
 
@@ -10,12 +10,12 @@
  function SimController() {
      // create a data model that exposes parameters to smart sparrow
      this.simModel = new SimModel(this, {
-        mastery: 'false',
-        numerator: 7,
-        denominator: 10,
-        firstQuestion: 0,
-        lastQuestion: 0,
-    });
+         mastery: 'false',
+         numerator: 7,
+         denominator: 10,
+         firstQuestion: 0,
+         lastQuestion: 0,
+     });
 
      // expose model data to Smart Sparrow
      pipit.CapiAdapter.expose('mastery', this.simModel);
@@ -23,7 +23,7 @@
      pipit.CapiAdapter.expose('denominator', this.simModel);
      pipit.CapiAdapter.expose('firstQuestion', this.simModel);
      pipit.CapiAdapter.expose('lastQuestion', this.simModel);
-     
+
 
      // let smart sparrow know that the sim is ready to accept values
      pipit.Controller.notifyOnReady();
@@ -55,18 +55,17 @@
 
 
  SimController.prototype.setupDisplay = function() {
-     // create a brand new let expression
-    this.simModel.optionExpression.randomOptionExpression();
-    // choose a question randomly
-    var question = this.simModel.questionBank.chooseQuestion(this.getModelValue('firstQuestion'), this.getModelValue('lastQuestion'));
-    // store the answer(s) to the question we chose in the last step
-    this.simModel.questionBank.setAnswers(this.simModel.optionExpression);
-    // draw the results for the last five questions
-    this.simView.questionBankView.drawAnswerHistory(this.simModel.questionBank.answerHistory);
-    // draw the expressions on the screen
-    this.simView.optionView.drawOptionExpression(this.simModel.optionExpression);
-    // display the next question
-    this.simView.questionBankView.presentQuestion(question);
+     this.simModel.datatypeExpression.randomDatatypeExpression();
+     // choose a question randomly
+     var question = this.simModel.questionBank.chooseQuestion(this.getModelValue('firstQuestion'), this.getModelValue('lastQuestion'));
+     // store the answer(s) to the question we chose in the last step
+     this.simModel.questionBank.setAnswers(this.simModel.datatypeExpression);
+     // draw the results for the last five questions
+     this.simView.questionBankView.drawAnswerHistory(this.simModel.questionBank.answerHistory);
+     // draw the expressions on the screen
+     this.simView.datatypeView.drawDatatypeExpression(this.simModel.datatypeExpression);
+     // display the next question
+     this.simView.questionBankView.presentQuestion(question);
  }
 
  // Create a new Controller for sim
